@@ -1,0 +1,117 @@
+Tablolar için migration kullandım: 
+-add-migration Name
+-update database
+bunları Paket Yöneticisi Konsoluna yazdım
+
+ya da:
+
+CREATE TABLE Yetkiler (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    YetkiIsimleri VARCHAR(50),
+);
+
+CREATE TABLE YetkiGruplari (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    YetkiGrupIsimleri VARCHAR(50),
+);
+
+CREATE TABLE Yetki_YetkiGruplari (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    YetkiId INT,
+    GrupId INT,
+);
+
+CREATE TABLE Kullanicilar (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    KullaniciSoyisim VARCHAR(50),
+    KullaniciIsim VARCHAR(50),
+);
+
+CREATE TABLE Kullanici_YetkGruplari (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    KullaniciId INT,
+    GrupId INT,
+);
+
+Insert için: 
+INSERT INTO Yetkiler (YetkiIsimleri)
+VALUES ('Taleplerim s. yetkisi'),
+	('Satışlarım s. yetkisi'),
+	('ilanlarım s. yetkisi'),
+	('dashboard yetkisi'),
+	('wallboard yetkisi'),
+	('izinlerim yetkisi'),
+	('A yetkisi'),
+	('B yetkisi'),
+	('C yetkisi'),
+	('D yetkisi'),
+	('E yetkisi'),
+	('F yetkisi'),
+	('G yetkisi');
+
+
+INSERT INTO YetkiGruplari(YetkiGrupIsimleri)
+VALUES ('Mağaza Müd. grubu'),
+	('Satış müdürleri grubu'),
+	('Eğitim destek grubu'),
+	('Ik çalışanları grubu'),
+	('IT desk grubu'),
+	('Raporlama grubu');
+
+INSERT INTO Yetki_YetkiGruplari(YetkiId, GrupId)
+VALUES (2, 6),
+	(4, 2),
+	(4, 6),
+	(5, 2),
+	(8, 6),
+	(8, 2),
+	(8, 4),
+	(9, 5),
+	(11, 2),
+	(7, 2),
+	(7, 4),
+	(1, 5),
+	(1, 4),
+	(3, 5),
+	(3, 6),
+	(12, 2),
+	(12, 4),
+	(12, 5),
+	(2, 3),
+	(3, 3),
+	(5, 3),
+	(7, 3),
+	(6, 3),
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(4, 1),
+	(5, 1),
+	(6, 1);
+
+
+INSERT INTO Kullanicilar(KullaniciSoyisim, KullaniciIsim)
+VALUES ('Yerli', 'Ali'),
+	('Koşucu', 'Ayşe'),
+	('Şengül', 'Mustafa'),
+	('Dağlar', 'Ahmet'),
+	('Kanbaz', 'Ayşe'),
+	('Kaçar', 'Fatma'),
+	('Koşar', 'Veli'),
+	('Şaşmaz', 'Zeynep');
+
+
+INSERT INTO Kullanici_YetkGruplari(KullaniciId, GrupId)
+VALUES (3, 2),
+	(7, 3),
+	(5, 5),
+	(6, 5),
+	(2, 6),
+	(8, 6),
+	(2, 4),
+	(4, 2),
+	(1, 5),
+	(5, 1),
+	(6, 1),
+	(7, 1),
+	(8, 1);
